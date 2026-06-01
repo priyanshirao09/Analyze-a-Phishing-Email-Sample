@@ -1,88 +1,77 @@
-# Phishing Email Analysis
+# Phishing Email Analysis — README
 
 ## Overview
 
-This document is a step-by-step analysis of a real-world phishing email that impersonates **PayPal**. It serves as a practical cybersecurity exercise for identifying common phishing tactics, attack vectors, and social engineering techniques.
-
-**Tools Required:** Email client or saved email file (text), free online header analyzer
+This document presents a structured analysis of a real-world phishing email sample impersonating **PayPal**. It is designed as a hands-on cybersecurity exercise to help users identify common phishing tactics and indicators of compromise.
 
 ---
 
-## Analysis Steps
+## Document Summary
 
-### 1. Obtain a Sample Phishing Email
-A realistic phishing email is provided as the subject of analysis. It mimics an official PayPal security alert, warning the recipient of account limitations and demanding immediate action.
-
-### 2. Examine the Sender's Address for Spoofing
-The sender uses `paypa1.com` — a typosquatted domain where the letter `l` is replaced with the digit `1`. The Reply-To address points to a completely different fake domain (`paypal-secure-login.net`), which is a strong spoofing indicator.
-
-### 3. Check Email Headers for Discrepancies
-Key header anomalies identified:
-- Email originated from a Russian bulk-mail server (`bulk-mail-host.ru`) unrelated to PayPal
-- Sent via **PHPMailer 6.1**, a tool commonly used in mass phishing campaigns
-- Message-ID domain matches the phishing server, not PayPal's infrastructure
-
-### 4. Identify Suspicious Links or Attachments
-The email contains a malicious URL: `paypal-secure-verify-account.xyz/login?token=xR77QpL`
-- The `.xyz` TLD is cheap and commonly used in phishing sites
-- The `?token=` parameter uniquely tracks which victims clicked the link
-- Leads to a fake login page designed to steal credentials
-
-### 5. Look for Urgent or Threatening Language
-Multiple high-pressure phrases are used to override rational judgment:
-- *"URGENT: Your PayPal Account Has Been Limited"*
-- *"verify your information IMMEDIATELY"*
-- *"permanently suspended within 24 hours"*
-
-### 6. Note Mismatched URLs
-The link text appears legitimate, but the actual destination is a fraudulent domain — a technique known as **URL masking**. Hovering over the link (without clicking) would reveal the true malicious URL.
-
-### 7. Verify Spelling and Grammar Errors
-Multiple basic errors were found:
-- *"bellow"* instead of *"below"*
-- *"loose access"* instead of *"lose access"*
-- *"contact are support team"* instead of *"our support team"*
-
-### 8. Summarize Phishing Traits
-A complete list of all phishing indicators found is compiled as a summary.
+**Title:** Analyze a Phishing Email Sample  
+**Tools Required:** Email client or saved email file (text), free online header analyzer  
+**Subject of Analysis:** A fake PayPal security alert email
 
 ---
 
-## Phishing Indicators Found
+## What's Inside
 
-| # | Indicator | Detail |
-|---|---|---|
-| 1 | Typosquatted sender domain | `paypa1.com` (digit `1` instead of letter `l`) |
-| 2 | Fake Reply-To domain | `paypal-secure-login.net` |
-| 3 | Suspicious origin server | `bulk-mail-host.ru` (Russian bulk-mail host) |
-| 4 | Mass phishing tool | PHPMailer 6.1 |
-| 5 | Malicious URL | `paypal-secure-verify-account.xyz` |
-| 6 | Victim-tracking token | `?token=xR77QpL` in the URL |
-| 7 | URL masking | Displayed link hides the real destination |
-| 8 | Social engineering | Fake urgency and 24-hour account suspension threat |
-| 9 | Grammar/spelling errors | "bellow", "loose access", "contact are support" |
+The document walks through a step-by-step analysis of a phishing email using the following methodology:
 
-**Verdict:** Confirmed phishing attempt with high confidence. Objective is credential theft via a fake PayPal login page.
+1. **Obtain a Sample Phishing Email** — A realistic phishing email is provided, impersonating PayPal with a spoofed sender, fake domain, and malicious link.
+
+2. **Examine the Sender's Address** — Identifies the typosquatting technique used (`paypa1.com` instead of `paypal.com`) and the mismatched Reply-To domain.
+
+3. **Check Email Headers for Discrepancies** — Analyzes header fields including the originating server (a Russian bulk-mail host), X-Mailer (PHPMailer), and Message-ID to detect illegitimate infrastructure.
+
+4. **Identify Suspicious Links or Attachments** — Breaks down the malicious URL (`paypal-secure-verify-account.xyz`) and explains the victim-tracking token embedded in the link.
+
+5. **Look for Urgent or Threatening Language** — Highlights social engineering tactics such as fake deadlines and account suspension threats.
+
+6. **Note Mismatched URLs** — Explains URL masking, where a link appears legitimate but redirects to a fraudulent site.
+
+7. **Verify Spelling and Grammar Errors** — Points out multiple errors ("bellow", "loose", "are support") as phishing red flags.
+
+8. **Summarize Phishing Traits** — A comprehensive list of all phishing indicators found in the email.
 
 ---
 
-## Use Cases
+## Key Findings
 
-- Cybersecurity awareness and employee training
+| Indicator | Detail |
+|---|---|
+| Spoofed sender domain | `paypa1.com` (digit `1` instead of letter `l`) |
+| Fake Reply-To | `paypal-secure-login.net` |
+| Origin server | `bulk-mail-host.ru` (Russia) |
+| Email tool used | PHPMailer 6.1 (mass phishing script) |
+| Malicious URL | `paypal-secure-verify-account.xyz` |
+| Tracking token | `?token=xR77QpL` in the URL |
+| Social engineering | Urgency, fear of account loss, fake 24-hour deadline |
+| Grammar errors | "bellow", "loose access", "contact are support" |
+
+**Conclusion:** This is a confirmed high-confidence phishing attempt aimed at stealing PayPal login credentials.
+
+---
+
+## Purpose & Use Cases
+
+- Cybersecurity awareness training
 - SOC analyst onboarding exercises
-- Academic coursework on email security and social engineering
-- Self-study for identifying phishing in everyday email
+- Academic coursework on email security
+- Personal education on recognizing phishing attacks
 
 ---
 
-## What To Do If You Receive This Email
+## Recommended Actions Upon Receiving Such Emails
 
-1. Do **not** click any links
-2. Do **not** enter credentials on any linked page
-3. Report it as phishing in your email client
-4. Forward to `spoof@paypal.com` (PayPal's official abuse address)
-5. Delete the email immediately
+- Do **not** click any links
+- Do **not** enter credentials on linked pages
+- Report the email as phishing to your email provider
+- Forward to the impersonated company's abuse address (e.g., `spoof@paypal.com`)
+- Delete the email immediately
 
 ---
 
-> **Disclaimer:** The phishing email sample in this document is strictly for educational purposes. Do not visit any of the URLs referenced.
+## Disclaimer
+
+The phishing email sample used in this document is for **educational purposes only**. The malicious URLs referenced should never be visited.
